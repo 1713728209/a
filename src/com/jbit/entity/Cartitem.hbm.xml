@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.jbit.entity.Cartitem" table="cartitem" catalog="a">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="product" class="com.jbit.entity.Product" fetch="select">
+            <column name="pid" />
+        </many-to-one>
+        <many-to-one name="user" class="com.jbit.entity.User" fetch="select">
+            <column name="uid" />
+        </many-to-one>
+        <property name="number" type="java.lang.Integer">
+            <column name="number" not-null="true" />
+        </property>
+        <property name="sum" type="java.lang.Double">
+            <column name="sum" precision="10" not-null="true" />
+        </property>
+        <property name="deleteAt" type="java.util.Date">
+            <column name="deleteAt" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
